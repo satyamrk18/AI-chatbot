@@ -1,0 +1,56 @@
+.inputchat-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  bottom: 0px;
+  gap: 10px;
+  align-content: center;
+  justify-content: center;
+}
+input {
+  width: 60%;
+  height: 35px;
+  position: relative;
+  bottom: 0px;
+  font-size: 15px;
+  border:1px solid rgba(0, 0, 0, 0.219); 
+  border-radius: 12px;
+ background-image: radial-gradient(
+      circle at 30% 70%,
+      rgba(173, 216, 230, 0.502),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(255, 182, 193, 0.537),
+      transparent 60%
+    );
+}
+input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(95, 212, 248, 0.5);
+}
+button {
+  border-radius: 40%;
+  text-align: center;
+  padding-top: 10px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  color: #000;
+  font-weight: 600;
+  box-shadow: 5px 5px 5px rgba(173, 216, 230, 0.753), 5px 5px 5px rgba(255, 182, 193, 0.74),
+    5px 5px 5px rgba(182, 255, 215, 0.774), 5px 5px 5px rgba(255, 182, 234, 0.797);
+}
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  border:1px solid rgb(95, 212, 248);
+  color: black;
+}
+button:active {
+  transform: scale(0.98);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
