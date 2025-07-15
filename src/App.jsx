@@ -7,7 +7,7 @@ function App() {
       {/* Your Content/Components  */}
 
       <div className="sidebar">
-        <Button name="New Chat" className="btn"/>
+        <Button name="New Chat"/>
         <Button name="History" />
       </div>
       <div className="chatbody"></div>

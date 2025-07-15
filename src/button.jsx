@@ -1,6 +1,6 @@
 import React from 'react';
 import './button.css';
-import { AIButton } from '@innovaccer/design-system';
+
 
 const Button = ({ name }) => {
   return (
