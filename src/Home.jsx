@@ -18,7 +18,7 @@ const Home = () => {
 
       <div className="sidebar">
         <Button name="New Chat"  onClick={reload}/>
-        <Button name="History"/>
+       <Navigator />
       </div>
       <div className="chatbody">
         <button className="theme-btn">

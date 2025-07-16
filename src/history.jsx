@@ -1,9 +1,12 @@
 import React from "react";
-import App from "./App.jsx"
+import { Link } from "react-router-dom";
+import Home from "./Home.jsx";
+import Button from "./button.jsx"
 const history = () => {
   return (
     <div>
-   <h1>history</h1>
+        <h1>History</h1>
+        <Link to="/"><Button name="Home"/></Link>
     </div>
   );
 };
