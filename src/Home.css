@@ -1,0 +1,68 @@
+.container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #fefcff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.background-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(
+      circle at 30% 70%,
+      rgba(173, 216, 230, 0.502),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(255, 182, 193, 0.537),
+      transparent 60%
+    );
+}
+.sidebar {
+  height: 95vh;
+  width: 25%;
+  border: 1px solid transparent;
+  box-shadow: 5px 5px 15px rgb(173, 216, 230), 5px 5px 15px rgb(255, 182, 193),
+    5px 5px 15px rgb(182, 255, 215), 5px 5px 15px rgb(255, 182, 234);
+  left: 0px;
+  margin: 5px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.chatbody {
+  height: 90vh;
+  width: 75%;
+  margin: 5px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.input-send-field {
+  width: 100%;
+  position:absolute;
+  display: flex;
+  bottom: 0px;
+}
+.theme-btn {
+  position: absolute;
+  top:0px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
