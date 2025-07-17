@@ -1,25 +1,66 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { UserPen, MailPlus } from "lucide-react";
-import { useState, useEffect } from "react";
 import "./signin.css";
 
+const SignIn = () => {
+  const [userData, setUserData] = useState({ name: "", email: "" });
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
 
+  useEffect(() => {
+    const localdata = localStorage.getItem("UserData");
+    if (localdata) {
+      const parsedata = JSON.parse(localdata);
+      setUserData({
+        name: parsedata.name || "",
+        email: parsedata.email || "",
+      });
+    }
+  }, []);
 
-const signin = () => {
-    const [name,setName] = useState("");  
-const[email,setEmail] = useState("")  
-  const handlesignin = () => {
+  const handleSignIn = () => {
     toast.custom(
       (t) => (
         <div className="userInputs">
           <UserPen />
-          <input type="text" placeholder="Enter Name" name="username"  onChange={(e)=>{setName(e.target.value)}}/>
+          <input type="text" placeholder="Enter Name" ref={nameRef} defaultValue={userData.name} />
           <MailPlus />
-          <input type="email" placeholder="Enter Email" name="email"  onChange={(e)=>{setEmail(e.target.value)}} />
+          <input type="email" placeholder="Enter Email" ref={emailRef} defaultValue={userData.email} />
           <div className="data-btn">
-            <button className="save" onClick={saveData}>Save</button>
-            <button className="delete">Delete</button>
+            <button
+              className="save"
+              onClick={() => {
+                const name = nameRef.current.value.trim();
+                const email = emailRef.current.value.trim();
+
+                if (!name) {
+                  alert("Please enter a name");
+                  return;
+                }
+                if (!email) {
+                  alert("Please enter an email");
+                  return;
+                }
+
+                const newUser = { name, email };
+                setUserData(newUser);
+                localStorage.setItem("UserData", JSON.stringify(newUser));
+                toast.dismiss(t.id);
+              }}
+            >
+              Save
+            </button>
+            <button
+              className="delete"
+              onClick={() => {
+                localStorage.removeItem("UserData");
+                setUserData({ name: "", email: "" });
+                toast.dismiss(t.id);
+              }}
+            >
+              Delete
+            </button>
           </div>
           <div
             className="close"
@@ -33,19 +74,17 @@ const[email,setEmail] = useState("")
       ),
       { duration: Infinity }
     );
-    const saveData = () => {
-        alert("data added");
-    }
-
   };
-const isSignin = "sign in"
+
+  const isSignin = "sign in";
   return (
     <div className="sign-in-container">
-      <button className="sign-in-btn" onClick={handlesignin}>
-   sign In
+      <Toaster />
+      <button className="sign-in-btn" onClick={handleSignIn}>
+        {userData.name !== "" ? userData.name : isSignin}
       </button>
     </div>
   );
 };
 
-export default signin;
+export default SignIn;
